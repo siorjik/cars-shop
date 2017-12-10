@@ -1,0 +1,76 @@
+@font-face {
+  font-family: lazer;
+  src: url(fonts/lazer.ttf);
+}
+
+@font-face {
+  font-family: khan;
+  src: url(fonts/khan.ttf);
+}
+
+* {
+  text-decoration: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#main-wrap {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+
+  header {
+    background: url(img/thor.jpg) no-repeat;
+    background-size: cover;
+    padding: 1%;
+    height: 100vh;
+  }
+
+  .content {
+    display: flex;
+
+    aside {
+      flex-grow: 0.5;
+      padding: 1%;
+      background: green;
+    }
+
+    main {
+      flex-grow: 1.5;
+      padding: 1%;
+      background: grey;
+    }
+  }
+
+  footer {
+    background: blueviolet;
+  padding: 1%;
+  }
+}
+
+/*#main-wrap header {
+  background: yellow;
+  padding: 1%;
+}*/
+
+/*#main-wrap .content {
+  display: flex;
+}*/
+
+/*#main-wrap .content aside {
+  flex-grow: 0.5;
+  padding: 1%;
+  background: green;
+}*/
+
+/*#main-wrap .content main {
+  flex-grow: 1.5;
+  padding: 1%;
+  background: grey;
+}*/
+
+/*#main-wrap footer {
+  background: blueviolet;
+  padding: 1%;
+}*/
