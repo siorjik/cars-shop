@@ -24,11 +24,12 @@
     background: url(img/thor.jpg) no-repeat;
     background-size: cover;
     padding: 1%;
-    height: 100vh;
+    height: 98vh;
   }
 
   .content {
     display: flex;
+    min-height: 100vh;
 
     aside {
       flex-grow: 0.5;
@@ -45,32 +46,56 @@
 
   footer {
     background: blueviolet;
-  padding: 1%;
+    padding: 1%;
+    min-height: 25vh;
   }
 }
 
-/*#main-wrap header {
-  background: yellow;
-  padding: 1%;
-}*/
+//@media
+@media all and(max-width: 992px) {
+  #main-wrap {
+    header {
+      .carousel-wrap {
+        width: 65%;
+      }
+    }
+  }
+}
 
-/*#main-wrap .content {
-  display: flex;
-}*/
+@media all and(max-width: 768px) {
+  #main-wrap {
+    header {
+      background: black;
+      height: auto;
 
-/*#main-wrap .content aside {
-  flex-grow: 0.5;
-  padding: 1%;
-  background: green;
-}*/
+      h1 {
+        font-size: 1.3em;
+        //margin-bottom: 40px;
+      }
+      .carousel-wrap {
+        width: 100%;
 
-/*#main-wrap .content main {
-  flex-grow: 1.5;
-  padding: 1%;
-  background: grey;
-}*/
+        img {
+          width: 90%;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}
 
-/*#main-wrap footer {
-  background: blueviolet;
-  padding: 1%;
-}*/
+@media all and(max-width: 480px) {
+  #main-wrap {
+    header {
+      .carousel-wrap {
+        img {
+          margin-bottom: 30px;
+        }
+
+        .thumbs-wrapper {
+          display: none;
+        }
+      }
+    }
+  }
+}
