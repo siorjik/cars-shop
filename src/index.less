@@ -8,17 +8,29 @@
   src: url(fonts/khan.ttf);
 }
 
+@font-face {
+  font-family: motherland;
+  src: url(fonts/motherland.ttf);
+}
+
+@font-face {
+  font-family: gotham;
+  src: url(fonts/gotham.ttf);
+}
+
 * {
   text-decoration: none;
   list-style: none;
   padding: 0;
   margin: 0;
+  outline: none;
 }
 
 #main-wrap {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
+  font-family: gotham, sans-serif;
 
   header {
     background: url(img/thor.jpg) no-repeat;
@@ -32,15 +44,35 @@
     min-height: 100vh;
 
     aside {
-      flex-grow: 0.5;
+      flex-basis: 10%;
       padding: 1%;
-      background: green;
+      background: bisque;
+      font-family: khan, sans-serif;
+      font-size: 1.3rem;
+      line-height: 2.5rem;
+
+      a {
+        color: brown;
+
+        &:hover {
+          border: none;
+          color: lighten(brown, 30%);
+        }
+      }
+      .active {
+        border-bottom: 1px solid brown;
+      }
     }
 
     main {
-      flex-grow: 1.5;
-      padding: 1%;
-      background: grey;
+      flex-basis: 90%;
+      padding: 2% 1% 1% 1%;
+
+      #transport-wrap {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
     }
   }
 

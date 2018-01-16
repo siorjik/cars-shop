@@ -9,8 +9,8 @@ class Header extends Component {
   render() {
     return (
       <div id="head-wrap">
-        <h1>Cars &nbsp; for &nbsp; superheroes</h1>
-        <Slider allCars={this.props.allCars}/>
+        <h1>All &nbsp; for &nbsp; superheroes</h1>
+        <Slider product={this.props.allproducts}/>
       </div>
     );
   }
@@ -18,7 +18,7 @@ class Header extends Component {
 
 let mapStateToProps = (state, ownProps) => {
   return {
-    allCars: state.getAllCars
+    allproducts: state.getAllProducts
   }
 }
 

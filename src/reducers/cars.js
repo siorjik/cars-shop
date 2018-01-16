@@ -3,37 +3,55 @@ let carsList = [
     id: 1,
     name: "Audi",
     img: "audi.png",
-    category: "sport"
+    class: "Sport",
+    type: "cars",
+    price: "30000$",
+    hot: true
   },
   {
     id: 2,
     name: "Porche",
     img: "porche.png",
-    category: "sport"
+    class: "Sport",
+    type: "cars",
+    price: "30000$",
+    hot: true
   },
   {
     id: 3,
     name: "Concept",
     img: "concept.png",
-    category: "sport"
+    class: "Sport",
+    type: "cars",
+    price: "30000$",
+    hot: false
   },
   {
     id: 4,
     name: "Rolls Royce",
     img: "rolls_royce.png",
-    category: "business"
+    class: "Business",
+    type: "cars",
+    price: "30000$",
+    hot: true
   },
   {
     id: 5,
     name: "Lamborghini",
     img: "lamborghini.png",
-    category: "supercar"
+    class: "Supercar",
+    type: "cars",
+    price: "30000$",
+    hot: false
   },
   {
     id: 6,
     name: "Cadillac",
     img: "cadillac.png",
-    category: "business"
+    class: "Business",
+    type: "cars",
+    price: "30000$",
+    hot: false
   }
 ];
 

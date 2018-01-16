@@ -1,15 +1,15 @@
-import React, {Component} from 'react';
+import React from "react";
 import {withRouter} from 'react-router-dom';
 import {connect} from "react-redux";
 
 import ProductCard from "./../components/ProductCard";
 
-class Main extends Component {
+class Cars extends React.Component {
   render() {
     return (
       <div id="transport-wrap">
-        {this.props.allProducts.map((product, index) => {
-          return (<ProductCard key={index} product={product}/>)
+        {this.props.getAllCars.map((car) => {
+          return (<ProductCard key={car.id} product={car}/>);
         })}
       </div>
     );
@@ -18,8 +18,8 @@ class Main extends Component {
 
 let mapStateToProps = (state, ownProps) => {
   return {
-    allProducts: state.getAllProducts
+    getAllCars: state.getAllCars
   }
 }
 
-export default withRouter(connect(mapStateToProps)(Main));
+export default withRouter(connect(mapStateToProps)(Cars));

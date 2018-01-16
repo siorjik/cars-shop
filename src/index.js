@@ -10,6 +10,9 @@ import thunk from 'redux-thunk';
 
 import Main from "./containers/Main";
 import Header from "./containers/Header";
+import Cars from "./containers/Cars";
+import Moto from "./containers/Moto";
+import ViewProduct from "./containers/ViewProduct";
 
 let store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
@@ -25,13 +28,18 @@ let App = () => {
             <aside>
               <nav>
                 <ul>
-                  <li><NavLink to="/">Main</NavLink></li>
+                  <li><NavLink exact to="/" activeClassName="active">Main</NavLink></li>
+                  <li><NavLink to="/cars" activeClassName="active">Cars</NavLink></li>
+                  <li><NavLink to="/moto" activeClassName="active">Motorcycles</NavLink></li>
                 </ul>
               </nav>
             </aside>
             <main>
               <Switch>
                 <Route exact path="/" component={Main}/>
+                <Route path="/cars" component={Cars}/>
+                <Route path="/moto" component={Moto}/>
+                <Route path="/view_product/:type/:id" component={ViewProduct}/>
               </Switch>
             </main>
           </div>
