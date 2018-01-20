@@ -1,0 +1,133 @@
+@font-face {
+  font-family: lazer;
+  src: url(fonts/lazer.ttf);
+}
+
+@font-face {
+  font-family: khan;
+  src: url(fonts/khan.ttf);
+}
+
+@font-face {
+  font-family: motherland;
+  src: url(fonts/motherland.ttf);
+}
+
+@font-face {
+  font-family: gotham;
+  src: url(fonts/gotham.ttf);
+}
+
+* {
+  text-decoration: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+#main-wrap {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  font-family: gotham, sans-serif;
+
+  header {
+    background: url(img/thor.jpg) no-repeat;
+    background-size: cover;
+    padding: 1%;
+    height: 98vh;
+  }
+
+  .content {
+    display: flex;
+    min-height: 100vh;
+
+    aside {
+      flex-basis: 10%;
+      padding: 1%;
+      background: bisque;
+      font-family: khan, sans-serif;
+      font-size: 1.3rem;
+      line-height: 2.5rem;
+
+      a {
+        color: brown;
+
+        &:hover {
+          border: none;
+          color: lighten(brown, 30%);
+        }
+      }
+      .active {
+        border-bottom: 1px solid brown;
+      }
+    }
+
+    main {
+      flex-basis: 90%;
+      padding: 2% 1% 1% 1%;
+
+      #transport-wrap {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+    }
+  }
+
+  footer {
+    background: blueviolet;
+    padding: 1%;
+    min-height: 25vh;
+  }
+}
+
+//@media
+@media all and(max-width: 992px) {
+  #main-wrap {
+    header {
+      .carousel-wrap {
+        width: 65%;
+      }
+    }
+  }
+}
+
+@media all and(max-width: 768px) {
+  #main-wrap {
+    header {
+      background: black;
+      height: auto;
+
+      h1 {
+        font-size: 1.3em;
+        //margin-bottom: 40px;
+      }
+      .carousel-wrap {
+        width: 100%;
+
+        img {
+          width: 90%;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media all and(max-width: 480px) {
+  #main-wrap {
+    header {
+      .carousel-wrap {
+        img {
+          margin-bottom: 30px;
+        }
+
+        .thumbs-wrapper {
+          display: none;
+        }
+      }
+    }
+  }
+}
