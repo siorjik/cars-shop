@@ -1,14 +1,15 @@
 var path = require("path");
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+//var UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   devtool: 'inline-source-map',
-  entry: path.join(__dirname, "/src/index.js"),
+  entry: ["webpack-hot-middleware/client", path.join(__dirname, "/src/client/index.js")],
   output: {
     filename: "bundle.js",
-    path: path.join(__dirname, "/public")
-    //publicPath: "/",
+    path: path.join(__dirname, "/public"),
+    publicPath: "/"
   },
   module: {
     rules: [
@@ -60,13 +61,17 @@ module.exports = {
       }
     ]
   },
-  plugins: [new ExtractTextPlugin({filename: "bundle.css", /*disabled: false,*/ allChunks: true})],
+  plugins: [
+    new ExtractTextPlugin("bundle.css"),
+    new webpack.HotModuleReplacementPlugin()
+    //new UglifyJsPlugin()
+  ]/*,
   devServer: {
-    contentBase: path.join(__dirname, "public/"),
+    contentBase: path.join(__dirname, "public"),
     //compress: true,
     //port: 9001,
-    stats: {colors: true/*, 'errors-only'*/},
+    stats: {colors: true},
     //open: true,
     clientLogLevel: 'none'
-  }
+  }*/
 }
