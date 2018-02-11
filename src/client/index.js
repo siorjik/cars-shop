@@ -8,6 +8,9 @@ import rootReducer from "./reducers/index";
 import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
+import {fetchCars} from "./actions/carsActions";
+import {fetchMotos} from "./actions/motoActions";
+
 import Main from "./containers/Main";
 import Header from "./containers/Header";
 import Cars from "./containers/Cars";
@@ -15,6 +18,10 @@ import Moto from "./containers/Moto";
 import ViewProduct from "./containers/ViewProduct";
 
 let store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+
+//load in store async. response
+store.dispatch(fetchCars());
+store.dispatch(fetchMotos());
 
 let App = () => {
   return (

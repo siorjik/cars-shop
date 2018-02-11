@@ -5,7 +5,6 @@ import {withRouter} from 'react-router-dom';
 
 class ViewProduct extends React.Component {
   render() {
-    console.log(this.props.product);
     let {name, type, img} = this.props.product;
     return (
       <div id="view-wrap">
@@ -18,7 +17,7 @@ class ViewProduct extends React.Component {
 
 let mapStateToProps = (state, ownProps) => {
   return {
-    product: state.getAllProducts.find((prod) => prod.id === +ownProps.match.params.id && prod.type === ownProps.match.params.type)
+    product: state.getAllCars.concat(state.getAllMoto).find((prod) => prod.id === +ownProps.match.params.id && prod.type === ownProps.match.params.type)
   }
 }
 
