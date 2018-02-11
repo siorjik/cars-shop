@@ -65,13 +65,14 @@ module.exports = {
     new ExtractTextPlugin("bundle.css"),
     new webpack.HotModuleReplacementPlugin()
     //new UglifyJsPlugin()
-  ]/*,
+  ],
   devServer: {
     contentBase: path.join(__dirname, "public"),
     //compress: true,
     //port: 9001,
     stats: {colors: true},
     //open: true,
-    clientLogLevel: 'none'
-  }*/
+    clientLogLevel: 'none',
+    historyApiFallback: true
+  }
 }

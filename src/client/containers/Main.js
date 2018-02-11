@@ -2,13 +2,18 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {connect} from "react-redux";
 
+import {shuffleArr, concatArr} from "./../../libs/functions";
+
 import ProductCard from "./../components/ProductCard";
 
 class Main extends Component {
   render() {
+    let {getAllMoto, getAllCars} = this.props;
+    let allProducts = shuffleArr(concatArr(getAllMoto, getAllCars));
+
     return (
       <div id="transport-wrap">
-        {this.props.allProducts.map((product, index) => {
+        {allProducts.map((product, index) => {
           return (<ProductCard key={index} product={product}/>)
         })}
       </div>
@@ -18,7 +23,9 @@ class Main extends Component {
 
 let mapStateToProps = (state, ownProps) => {
   return {
-    allProducts: state.getAllProducts
+    //allProducts: state.getAllMoto.concat(state.getAllCars)
+    getAllMoto: state.getAllMoto,
+    getAllCars: state.getAllCars
   }
 }
 
