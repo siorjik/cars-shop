@@ -15,7 +15,7 @@ export default class ProductCard extends React.Component {
         <h3>{product.name}</h3>
         <p><b>Price:</b> {product.price}</p>
         <div className="btn-wrap">
-          <NavLink to={`/view_product/${product.type}/${product.id}`}><button><MdVisibility/> View</button></NavLink>
+          <NavLink to={`/view_product/${product.type}/${product._id}`}><button><MdVisibility/> View</button></NavLink>
           <button><MdAttachMoney/> Buy</button>
           <button><MdAddShoppingCart/> Add</button>
         </div>
