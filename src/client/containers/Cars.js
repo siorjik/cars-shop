@@ -10,7 +10,7 @@ class Cars extends React.Component {
     return (
       <div id="transport-wrap">
         {this.props.getAllCars.map((car) => {
-          return (<ProductCard key={car.id} product={car}/>);
+          return (<ProductCard key={car._id} product={car}/>);
         })}
       </div>
     );

@@ -66,12 +66,9 @@ export function getCars(cars) {
 
 export function fetchCars() {
   return function(dispatch) {
-    return axios.get('/api/cars')
-      .then(function (response) {
-        return response = carsList;
-      })
+    return axios.get('/api/get_cars')
       .then(function(response) {
-        return dispatch(getCars(response));
+        return dispatch(getCars(response.data));
       })
       .catch(function (error) {
         console.error(error);

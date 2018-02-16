@@ -46,7 +46,7 @@ let App = () => {
                 <Route exact path="/" component={Main}/>
                 <Route path="/cars" component={Cars}/>
                 <Route path="/moto" component={Moto}/>
-                <Route path="/view_product/:type/:id" component={ViewProduct}/>
+                <Route path="/view_product/:type/:_id" component={ViewProduct}/>
               </Switch>
             </main>
           </div>

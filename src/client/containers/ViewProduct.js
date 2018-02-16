@@ -17,7 +17,7 @@ class ViewProduct extends React.Component {
 
 let mapStateToProps = (state, ownProps) => {
   return {
-    product: state.getAllCars.concat(state.getAllMoto).find((prod) => prod.id === +ownProps.match.params.id && prod.type === ownProps.match.params.type)
+    product: state.getAllCars.concat(state.getAllMoto).find((prod) => prod._id === ownProps.match.params._id && prod.type === ownProps.match.params.type)
   }
 }
 
