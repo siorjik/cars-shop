@@ -9,7 +9,8 @@ import middlewareWebpackHot from "webpack-hot-middleware";
 
 import mongoose from "mongoose";
 
-import route from "./routes/carRoutes"; 
+import routeCars from "./routes/carRoutes";
+import routeMoto from "./routes/motoRoutes"; 
 
 let app = express();
 
@@ -28,12 +29,19 @@ app.use(middlewareWebpackHot(compiler));
 
 app.use(express.static('public'));
 
-app.use("/api", route);
+app.use("/api", routeCars);
+app.use("/api", routeMoto);
  
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, "./../../public/index.html"));
+  res.redirect("/");
 });
  
 app.listen(8080, () => {
   console.log("Server is runing on 8080");
+});
+
+//err handler
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500);
 });
