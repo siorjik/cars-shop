@@ -39,12 +39,9 @@ export function getMotos(motos) {
 
 export function fetchMotos() {
   return function(dispatch) {
-    return axios.get('/api/moto')
-      .then(function (response) {
-        return response = motoList;
-      })
+    return axios.get('/api/get_moto')
       .then(function(response) {
-        return dispatch(getMotos(response));
+        return dispatch(getMotos(response.data));
       })
       .catch(function (error) {
         console.error(error);

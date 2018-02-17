@@ -16,7 +16,7 @@ export default class Slider extends React.Component {
           {props.map((product, index) => {
             let src = require(`./../img/${product.type}/${product.img}`);
             return (
-              <div key={index}>
+              <div key={product._id}>
                 <h3 style={{"color": "yellowgreen"}}><strong><i>Buy now! <span style={{"color": "yellow"}}>Hot price - </span><span style={{"color": "aqua"}}>{product.price}</span></i></strong></h3>
                 <img src={src} alt={product.name}/>
                 <p className="legend">{product.name}</p>
