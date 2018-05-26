@@ -17,48 +17,58 @@ import Cars from "./containers/Cars";
 import Moto from "./containers/Moto";
 import ViewProduct from "./containers/ViewProduct";
 
+//admin
+import Admin from "./admin/Admin";
+
 let store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
-//load in store async. response
+if(module.hot) {
+  module.hot.accept('./reducers/', () => {
+    const nextRootReducer = require('./reducers/index').default;
+    store.replaceReducer(nextRootReducer);
+  });
+}
+
+//start-loading in store with async. actions
 store.dispatch(fetchCars());
 store.dispatch(fetchMotos());
 
 let App = () => {
   return (
-    <Provider store={store}>
-      <Router>
-        <div id="main-wrap">
-          <header>
-            <Header/>
-          </header>
-          <div className="content">
-            <aside>
-              <nav>
-                <ul>
-                  <li><NavLink exact to="/" activeClassName="active">Main</NavLink></li>
-                  <li><NavLink to="/cars" activeClassName="active">Cars</NavLink></li>
-                  <li><NavLink to="/moto" activeClassName="active">Motorcycles</NavLink></li>
-                </ul>
-              </nav>
-            </aside>
-            <main>
-              <Switch>
-                <Route exact path="/" component={Main}/>
-                <Route path="/cars" component={Cars}/>
-                <Route path="/moto" component={Moto}/>
-                <Route path="/view_product/:type/:_id" component={ViewProduct}/>
-              </Switch>
-            </main>
-          </div>
-          <footer>
-            <h2>footer!</h2>
-          </footer>
+    <Router>
+      <div id="main-wrap">
+        <header>
+          <Header/>
+        </header>
+        <div className="content">
+          <aside>
+            <nav>
+              <ul>
+                <li><NavLink exact to="/" activeClassName="active">Main</NavLink></li>
+                <li><NavLink to="/cars" activeClassName="active">Cars</NavLink></li>
+                <li><NavLink to="/moto" activeClassName="active">Motorcycles</NavLink></li>
+              </ul>
+            </nav>
+          </aside>
+          <main>
+            <Switch>
+              <Route exact path="/" component={Main}/>
+              <Route path="/cars" component={Cars}/>
+              <Route path="/moto" component={Moto}/>
+              <Route path="/view_product/:type/:_id" component={ViewProduct}/>
+            </Switch>
+          </main>
         </div>
-      </Router>
-    </Provider>
+        <footer>
+          <h2>footer!</h2>
+        </footer>
+      </div>
+    </Router>
   );
 }
 
-ReactDOM.render(<App/>, document.getElementById('app'));
+let MainApp;
+if(window.location.pathname === "/admin") MainApp = () => <Admin/>;
+else MainApp = () => <App/>;
 
-if(module.hot) module.hot.accept(); //react-hot-reloaded
+ReactDOM.render(<Provider store={store}><MainApp/></Provider>, document.getElementById('app'));
