@@ -1,0 +1,104 @@
+#frame-wrap {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  
+  .wrap-btn-menu {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin: 0 auto 20px;
+  }
+
+  .wrap-head-btn {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    width: 100%;
+
+    div, h2 {
+      flex-basis: 50%;
+    }
+  }
+
+  #wrap-prod {
+    background: whitesmoke;
+    width: 70%;
+    margin: 0 auto;
+    padding: 10px;
+
+    .product {
+      margin: 5px;
+      background: white;
+      display: flex;
+      padding: 10px;
+
+      .block-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
+        input:first-of-type {
+          margin-bottom: 50px;
+        }
+      }
+
+      .prod-descript {
+        width: 50%;
+
+        div p {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+
+  button, input[type=button] {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+.prod-img {
+  width: 50%;
+
+  label {
+    background: gray;
+    border-radius: 5px;
+    width: 30%;
+    padding: 5px;
+    cursor: pointer;
+
+    input {
+      width: 0;
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.prod-form label {
+  display: inline-block;
+  width: 30%;
+}
+
+.prod-form-new {
+  label {
+    display: inline-block;
+    width: 30%;
+  }
+
+  input, select {
+    width: 80%;
+  }
+}
+
+.content {
+  display: flex;
+  justify-content: space-around;
+}

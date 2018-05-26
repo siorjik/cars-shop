@@ -1,0 +1,46 @@
+#modal-wrap {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.5);
+
+  .modal-content-wrap {
+    width: 50%;
+    background: beige;
+    top: 10%;
+    left: 23%;
+    position: absolute;
+    padding: 20px;
+    border-radius: 10px;
+
+    p {
+      margin-bottom: 20px;
+
+      .close-modal {
+        border: 1px solid black;
+        border-radius: 50%;
+        font-size: 10px;
+        padding: 3px 5px;
+        background: white;
+        cursor: pointer;
+  
+        &:hover {
+          background: red;
+        }
+      }
+    }
+
+    .content-modal {
+      overflow: auto;
+      max-height: 60vh;
+    }
+
+    .footer-btn-wrap {
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+}

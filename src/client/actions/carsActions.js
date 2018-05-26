@@ -70,7 +70,62 @@ export function fetchCars() {
       .then(function(response) {
         return dispatch(getCars(response.data));
       })
-      .catch(function (error) {
+      .catch(function(error) {
+        console.error(error);
+      });
+  }
+}
+
+export function editCar(data) {
+  console.log(data);
+  return {
+    type: "EDIT_CAR",
+    payload: data
+  }
+}
+
+export function updateCar(data) {
+  return function(dispatch) {
+    dispatch(editCar(data));
+    return axios.put('/api/update_car', {data: data})
+      .catch(function(error) {
+        console.error(error);
+      });
+  }
+}
+
+export function removeCar(data) {
+  return {
+    type: "DELETE_CAR",
+    payload: data
+  }
+}
+
+export function delCar(data) {
+  return function(dispatch) {
+    dispatch(removeCar(data));
+    return axios.delete(`/api/delete_car/${data}`)
+      .catch(function(error) {
+        console.error(error);
+      });
+  }
+}
+
+export function addNewCar(data) {
+  return {
+    type: "ADD_NEW",
+    payload: data
+  }
+}
+
+export function saveNewCar(data) {
+  return function(dispatch) {
+    return axios.post('/api/save_cars', {data: data})
+      .then((res) => {
+        dispatch(addNewCar(res.data));
+        return res;
+      })
+      .catch(function(error) {
         console.error(error);
       });
   }
