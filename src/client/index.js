@@ -3,10 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.less';
 import {BrowserRouter as Router, Route, Switch, NavLink, withRouter} from 'react-router-dom';
 import {Provider, connect} from "react-redux";
-import {createStore, applyMiddleware } from "redux";
-import rootReducer from "./reducers/index";
-import {composeWithDevTools} from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
 
 import {fetchCars} from "./actions/carsActions";
 import {fetchMotos} from "./actions/motoActions";
@@ -17,17 +13,12 @@ import Cars from "./containers/Cars";
 import Moto from "./containers/Moto";
 import ViewProduct from "./containers/ViewProduct";
 
+import configureStore from "./store";
+
 //admin
 import Admin from "./admin/Admin";
 
-let store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
-
-if(module.hot) {
-  module.hot.accept('./reducers/', () => {
-    const nextRootReducer = require('./reducers/index').default;
-    store.replaceReducer(nextRootReducer);
-  });
-}
+let store = configureStore();
 
 //start-loading in store with async. actions
 store.dispatch(fetchCars());

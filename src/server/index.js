@@ -94,7 +94,7 @@ app.get('*', (req, res) => {
 });
  
 app.listen(8080, () => {
-  console.log("Server is runing on 8080");
+  console.log("Server is runing on 8080 🌎");
 });
 
 //err handler
