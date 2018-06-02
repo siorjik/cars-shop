@@ -26,7 +26,9 @@ export default class ImageUpload extends React.Component {
           let productClone = Object.assign({}, this.props.product);
           productClone.img = this.state.file.name;
 
-          this.props.updateCar(productClone);
+          let typeProduct = productClone.type;
+
+          this.props.updateProduct(productClone, typeProduct);
         }
       
         this.setState({message: res.data});

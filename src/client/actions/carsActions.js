@@ -77,7 +77,6 @@ export function fetchCars() {
 }
 
 export function editCar(data) {
-  console.log(data);
   return {
     type: "EDIT_CAR",
     payload: data
@@ -113,7 +112,7 @@ export function delCar(data) {
 
 export function addNewCar(data) {
   return {
-    type: "ADD_NEW",
+    type: "ADD_NEW_CAR",
     payload: data
   }
 }
