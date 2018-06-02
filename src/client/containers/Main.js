@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {connect} from "react-redux";
 
-import {shuffleArr, concatArr} from "./../../libs/functions";
+import {shuffleArr, concatArr} from "./../../services/functions";
 
 import ProductCard from "./../components/ProductCard";
 

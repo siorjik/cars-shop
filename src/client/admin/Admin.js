@@ -6,6 +6,7 @@ import Proptypes from "react-proptypes";
 import axios from "axios";
 
 import {updateCar, delCar, saveNewCar} from "./../actions/carsActions";
+import {updateMoto, delMoto, saveNewMoto} from "./../actions/motoActions";
 
 import Product from "./Product";
 import Modal from "./../components/Modal";
@@ -41,17 +42,36 @@ class Admin extends React.Component {
     }
   }
 
-  delCar(_id, img, type) {
+  delProduct(_id, img, type) {
     axios.post("/api/delete_img", {img: img, type: type})
       .then((res) => {
-        console.log(res);
-        this.props.delCar(_id);
-
-        this.setState((prevState, props) => ({
-          propsState: props.getAllCars
-        }));
+        switch (type) {
+          case "cars":
+            this.props.delCar(_id);
+            this.setState((prevState, props) => ({
+              propsState: props.getAllCars
+            }));
+          break;
+          case "moto":
+            this.props.delMoto(_id);
+            this.setState((prevState, props) => ({
+              propsState: props.getAllMoto
+            }));
+          break;
+        }
       })
       .catch((err) => console.log(err));
+  }
+
+  updateProduct(obj, type) {
+    switch(type) {
+      case "cars":
+        this.props.updateCar(obj);
+      break;
+      case "moto":
+        this.props.updateMoto(obj);
+      break;
+    }
   }
 
   //modal
@@ -86,13 +106,19 @@ class Admin extends React.Component {
 
         if(res.data === "File was uploaded!") {
           this.closeModal();
-          return this.props.saveNewCar(newProduct);
+          switch(newProduct.type) {
+            case "cars":
+              return this.props.saveNewCar(newProduct);
+            break;
+            case "moto":
+              return this.props.saveNewMoto(newProduct);
+            break;
+          }
         }
       })
       .then((res) => {
-        this.setState((prevState, props) => ({
-          propsState: props.getAllCars
-        }));
+        this.setState({propsState: [...this.state.propsState, res.data]});
+        
       })
       .catch(err => console.error(err));
     }
@@ -132,7 +158,7 @@ class Admin extends React.Component {
         <div id="wrap-prod">
           {this.state.propsState.map((item) => {
             return (
-              <Product  key={item._id} product={item} updateCar={this.props.updateCar} getProducts={this.getProducts.bind(this)} delCar={this.delCar.bind(this)}/>
+              <Product  key={item._id} product={item} updateProduct={this.updateProduct.bind(this)} getProducts={this.getProducts.bind(this)} delProduct={this.delProduct.bind(this)}/>
             );
           })}
         </div>
@@ -174,7 +200,10 @@ let mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     updateCar,
     delCar,
-    saveNewCar
+    saveNewCar,
+    updateMoto,
+    delMoto,
+    saveNewMoto
   }, dispatch);
 }
 

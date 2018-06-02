@@ -22,9 +22,11 @@ export default class Product extends React.Component {
       }
     }
 
-    this.props.updateCar(productClone);
+    let typeProduct = productClone.type;
+
+    this.props.updateProduct(productClone, typeProduct);
     this.setState({edit: false});
-    this.props.getProducts("cars");
+    this.props.getProducts(typeProduct);
   }
 
   closeEdit() {
@@ -33,11 +35,7 @@ export default class Product extends React.Component {
 
   delProduct() {
     let {_id, type, img} = this.props.product;
-    switch(type) {
-      case "cars":
-        this.props.delCar(_id, img, type);
-      break;
-    }
+    this.props.delProduct(_id, img, type);
   }
 
   render() {
@@ -62,7 +60,7 @@ export default class Product extends React.Component {
         <div className="prod-descript">
           {this.state.edit ? <EditForm product={this.props.product} closeEdit={this.closeEdit.bind(this)} saveEdit={this.saveEdit.bind(this)}/> : descriptCont}
         </div>
-        <div className="prod-img"><ImageUpload srcImg={require(`./../img/${type}/${img}`)} alt={img} type={type} product={this.props.product} updateCar={this.props.updateCar}/></div>
+        <div className="prod-img"><ImageUpload srcImg={require(`./../img/${type}/${img}`)} alt={img} type={type} product={this.props.product} updateProduct={this.props.updateProduct}/></div>
       </div>
     );
   }

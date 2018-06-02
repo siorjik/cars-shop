@@ -15,7 +15,7 @@ export function getAllCars(state = [], action) {
     case "DELETE_CAR":
     return state.filter((car) => car._id !== action.payload);
 
-    case "ADD_NEW":
+    case "ADD_NEW_CAR":
     return [...state, action.payload];
 
     default: return state;

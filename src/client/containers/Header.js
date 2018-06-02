@@ -3,7 +3,7 @@ import "./css/Header.less";
 import {withRouter} from 'react-router-dom';
 import {connect} from "react-redux";
 
-import {shuffleArr, concatArr} from "./../../libs/functions";
+import {shuffleArr, concatArr} from "./../../services/functions";
 
 import Slider from "./../components/Slider";
 

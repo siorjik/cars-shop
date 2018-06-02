@@ -48,3 +48,45 @@ export function fetchMotos() {
       });
   }
 }
+
+export function editMoto(data) {
+  return {
+    type: "EDIT_MOTO",
+    payload: data
+  }
+}
+
+export const updateMoto = data => dispatch => {
+  dispatch(editMoto(data));
+  return axios.put('/api/update_moto', {data: data})
+    .catch(err => console.error(err));
+}
+
+export function removeMoto(data) {
+  return {
+    type: "DELETE_MOTO",
+    payload: data
+  }
+}
+
+export const delMoto = data => dispatch => {
+  dispatch(removeMoto(data));
+  return axios.delete(`/api/delete_moto/${data}`, {data: data})
+    .catch(err => console.error(err));
+}
+
+export function addNewMoto(data) {
+  return {
+    type: "ADD_NEW_MOTO",
+    payload: data
+  }
+}
+
+export const saveNewMoto = data => dispatch => {
+  return axios.post('/api/save_moto', {data: data})
+    .then((res) => {
+      dispatch(addNewMoto(res.data));
+      return res;
+    })
+    .catch(error => console.error(error));
+}
